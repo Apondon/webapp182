@@ -16,7 +16,7 @@
                     span.movScore {{item.score}}
                   p.story {{item.split.join('、')}}
                   p.actor {{item.actor.join('、')}}
-                  nut-button(small) 购票
+                  nut-button(small @click='clickHandle') 购票
       Footer  
 </template>
 
@@ -39,6 +39,11 @@ export default {
           actor:['黄轩','苗苗']
         }
       ]
+    }
+  },
+  methods:{
+    clickHandle(){
+      this.$router.push('/detail')
     }
   },
   components: {

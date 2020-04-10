@@ -10,12 +10,6 @@ Vue.use(VueRouter)
     name: 'Home',
     component: Home
   },
-  {
-    path: '/about',
-    name: 'About',
-   
-    component: () => import('../views/About.vue')
-  },
   // 订单
   {
     path: '/order',
@@ -27,6 +21,36 @@ Vue.use(VueRouter)
     path: '/user',
     name: 'User',
     component: () => import('../views/User.vue')
+  },
+  // 详情页
+  {
+    path: '/detail',
+    name: 'Detail',
+    component: () => import('../views/Detail.vue')
+  },
+  // 影院
+  {
+    path: '/theater',
+    name: 'Theater',
+    component: () => import('../views/Theater.vue')
+  },
+  // 选座
+  {
+    path: '/booking',
+    name: 'Booking',
+    component: () => import('../views/Booking.vue')
+  },
+  // 登录
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/Login.vue')
+  },
+  // 注册
+  {
+    path: '/register',
+    name: 'Register',
+    component: () => import('../views/Register.vue')
   },
 ]
 
