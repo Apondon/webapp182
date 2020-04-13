@@ -48,7 +48,15 @@ export default {
   },
   components: {
     Footer
-  }
+  },
+
+  // beforeRouteEnter (to,from,next){
+  //       const user = localStorage.getItem('user') //前端模拟的保存用户的登陆状态
+  //       if(!user){ // 若该登录状态不存在
+  //         this.$router.push('/login')
+  //       }
+  //       next()
+  // }
 }
 </script>
 <style lang="scss" scoped>

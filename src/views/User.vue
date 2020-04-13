@@ -16,7 +16,7 @@
             div.userMethods
                 span.userTitle 看过的电影
                 span.selected-option >   
-            nut-button(block) 点击退出                 
+            nut-button(block,@click='clickHandle') 点击退出                 
         Footer
 </template>
 <script>
@@ -36,6 +36,11 @@ export default {
                     'value': 1
                 }
             ]
+        }
+    },
+    methods:{
+        clickHandle(){
+            this.$router.push('/login')
         }
     },
     components:{

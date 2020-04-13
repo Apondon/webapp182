@@ -1,7 +1,7 @@
 <template lang='pug'>
   div#app
       nut-navbar(style="background-color:#78a4f4; color: #fff; height:60px; line-height: 60px;"
-      :leftShow="showBack" :rightShow="false"  @on-click-back="backHandle" 
+      :leftShow="showBack" :rightShow="false"  @on-click-back="backHandle" v-if='showTop'
       ) {{title}}
 
       router-view
@@ -12,6 +12,7 @@ export default {
   data(){
     return{
       showBack:false, //返回按钮显示隐藏控制
+      showTop:true,// 顶部导航是否显示
       title:'小莱电影',
       route:[
         // 路由名字                    // 是否显示返回按钮
@@ -31,9 +32,11 @@ export default {
     '$route'(newVal){
       for(const item of this.route){
         // 特殊
-        if(newVal.name === 'Login' ){
-
-        }
+        if(newVal.name === 'Login' )
+          this.showTop = false
+        else
+          this.showTop = true
+        
         if(newVal.name == item.name){
           this.showBack = item.flag
           this.title = item.title
