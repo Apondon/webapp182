@@ -16,7 +16,7 @@
                     span.movScore {{item.score}}
                   p.story {{item.split.join('、')}}
                   p.actor {{item.actor.join('、')}}
-                  nut-button(small @click='clickHandle') 购票
+                  nut-button(small @click='clickHandle(item.id)') 购票
       Footer  
 </template>
 
@@ -37,30 +37,59 @@ export default {
           score:'9.9分',
           split:['剧情','爱情','战争'],
           actor:['黄轩','苗苗']
+        },
+        {
+          id:2,
+          name:'芳华1',
+          img:'red',
+          option:'2D',
+          screen:'IMAX',
+          score:'9.8分',
+          split:['剧情','爱情','战争'],
+          actor:['黄轩','苗苗']
+        },
+        {
+          id:3,
+          name:'芳华2',
+          img:'red',
+          option:'2D',
+          screen:'IMAX',
+          score:'9.8分',
+          split:['剧情','爱情','战争'],
+          actor:['黄轩','苗苗']
         }
       ]
     }
   },
   methods:{
-    clickHandle(){
-      this.$router.push('/detail')
+    clickHandle(id){
+      // this.$router.push('/detail')
+      // 明文传参
+      // this.$router.push(`/detail?id=${id}`) //方式一
+      // this.$router.push({
+      //   path:'/detail',
+      //   query:{
+      //     id:id
+      //   }
+      // })
+      // 非明文传参
+      this.$router.push({
+        name:'Detail',
+        params:{
+          id:id
+        }
+      })
     }
   },
   components: {
     Footer
   },
-
-  // beforeRouteEnter (to,from,next){
-  //       const user = localStorage.getItem('user') //前端模拟的保存用户的登陆状态
-  //       if(!user){ // 若该登录状态不存在
-  //         this.$router.push('/login')
-  //       }
-  //       next()
-  // }
 }
 </script>
 <style lang="scss" scoped>
 .home{
+  // 动态计算home区域的高度
+  height:100%-60;
   display: flex;
   flex-direction: column;
   flex:1;
