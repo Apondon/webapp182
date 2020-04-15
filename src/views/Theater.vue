@@ -13,7 +13,7 @@
                         div.thtPrice {{item.price}}
                     nut-col(:span='6')    
                         div.thtButton
-                            span(@click="clickHandle") 立即购买
+                            span(@click="clickHandle(item)") 立即购买
 
 </template>
 <script>
@@ -46,8 +46,14 @@ export default {
         this.rank = this.$route.params.rank
     },
     methods:{
-        clickHandle(){
-            this.$router.push('/booking')
+        clickHandle(item){
+            this.$router.push({
+                name:'Booking',
+                params:{
+                    name:this.name, //电影名
+                    room:item.room // 影厅
+                }
+            })
         }
     }
 }
