@@ -46,11 +46,13 @@ export default {
         Footer,
     },
     mounted(){
-        const list = localStorage.getItem('order')
-        if(list){
+        const list = localStorage.getItem('list')
 
+        if(list&&list.length>0){
+            this.orderList = JSON.parse(list)
+            this.hasOrder = true
         }else{
-
+            this.hasOrder = false
         }
     }
 }

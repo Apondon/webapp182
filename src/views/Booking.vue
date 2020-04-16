@@ -46,9 +46,9 @@ export default {
             // 座位数据
             seatsList:[
                 //id 座位is, row 第几排  col 第几列 status 座位状态 0 可选 1 已选择 2 已售
-                { id:1,row:1,col:1,status:2 },
-                { id:2,row:1,col:2,status:2 },
-                { id:3,row:1,col:3,status:2 },
+                { id:1,row:1,col:1,status:0 },
+                { id:2,row:1,col:2,status:0 },
+                { id:3,row:1,col:3,status:0 },
                 { id:4,row:1,col:4,status:0 },
                 { id:5,row:1,col:5,status:0 },
                 { id:6,row:1,col:6,status:0 },
@@ -141,10 +141,37 @@ export default {
         payOrder(){
             if(this.ticketsList.length>0){
                 alert('购买成功')
+                
                 // 1.将下单的座位的状态进行修改
                 for(const item of this.seatsList){
-                    if(item.status == 1) item.status = 2
+                    if(item.status == 1) item.status = 2  
                 }
+
+                //  将订单信息存入localStorage
+                let list = localStorage.getItem('list')
+                if(list){ //如果有list将list转化为数组
+                    list = JSON.parse(list)
+                }else{ // 若没有list 则把list创建为一个数组
+                    list = []
+                }
+                let seats = []
+                for(const item of this.ticketsList){
+                    //生成订单的座位信息
+                    seats.push(`${item.row}排 ${item.col}座`)
+                }
+                list.push({
+                    id:new Date().getTime(),
+                    name:this.name,
+                    count:this.ticketsList.length,
+                    date:this.startTime,
+                    seats:seats,
+                    price:this.ticketsList.length*10,
+                    status:1
+                })
+                localStorage.setItem('list',JSON.stringify(list))
+                
+
+
                 // 2. 将购票信息数组清空
                 this.ticketsList = []
             } 
