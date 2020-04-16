@@ -141,7 +141,6 @@ export default {
         payOrder(){
             if(this.ticketsList.length>0){
                 alert('购买成功')
-
                 // 1.将下单的座位的状态进行修改
                 for(const item of this.seatsList){
                     if(item.status == 1) item.status = 2

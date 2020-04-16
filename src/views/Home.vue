@@ -17,7 +17,7 @@
                   p.story {{item.split.join('、')}}
                   p.actor {{item.actor.join('、')}}
                   nut-button(small @click='clickHandle(item.id)') 购票
-      Footer  
+      Footer(flag='mov')  
 </template>
 
 <script>
