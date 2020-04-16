@@ -1,6 +1,6 @@
 <template lang="pug">
     div#order
-        div.orderContent
+        div.orderContent(v-if='hasOrder')
             div.orderCard(v-for='item in orderList' :key='item.id')
                 div
                     nut-row
@@ -15,7 +15,11 @@
 
                 div {{`总价：${item.price}元`}}
                     span {{'已完成'}}
-        Footer
+        
+        
+        div.noOrder(v-if='!hasOrder') 没有订单
+        
+        Footer(flag='order')
 </template>
 <script>
 import Footer from '@/components/Footer.vue'
@@ -34,11 +38,20 @@ export default {
                     price:120,
                     status:1
                 }
-            ]
+            ],
+            hasOrder:false,
         }
     },
     components:{
         Footer,
+    },
+    mounted(){
+        const list = localStorage.getItem('order')
+        if(list){
+
+        }else{
+
+        }
     }
 }
 </script>
@@ -65,6 +78,9 @@ export default {
         }
        
 
+    }
+    .noOrder{
+        flex:1;
     }
 }
 </style>

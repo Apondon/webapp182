@@ -3,8 +3,10 @@
       nut-navbar(style="background-color:#78a4f4; color: #fff; height:60px; line-height: 60px;"
       :leftShow="showBack" :rightShow="false"  @on-click-back="backHandle" v-if='showTop'
       ) {{title}}
+      keep-alive
+          router-view(v-if='$route.meta.keepAlive')
 
-      router-view
+      router-view(v-if='!$route.meta.keepAlive')  
 </template>
 
 <script>
@@ -47,7 +49,7 @@ export default {
   },
   methods:{
     backHandle(){
-      this.$router.push('/')
+      this.$router.back()
     }
   }
 }
