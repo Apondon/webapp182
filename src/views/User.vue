@@ -17,7 +17,7 @@
                 span.userTitle 看过的电影
                 span.selected-option >   
             nut-button(block,@click='clickHandle') 点击退出                 
-        Footer
+        Footer(flag='my')
 </template>
 <script>
 import Footer from '@/components/Footer.vue'
